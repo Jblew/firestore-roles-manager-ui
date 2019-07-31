@@ -1,16 +1,16 @@
 // tslint:disable:ordered-imports
 
 import firebase from "firebase/app";
-import "firebase/firestore";
 import * as firebaseui from "firebaseui";
 import { Configuration } from "@/config/Configuration";
+import { FirestoreRolesHelper } from "./FirestoreRolesHelper";
 
 export class FirebaseAuthHelper {
     public static initialize(opts: FirebaseAuthHelper.InitializeOptions) {
-        firebase.initializeApp(Configuration.load().firebase);
+        firebase.initializeApp(Configuration.get().firebase);
         firebase.auth().onAuthStateChanged((user: FirebaseAuthHelper.User | null) => {
             if (user) {
-                opts.authenticatedCb(user);
+                FirebaseAuthHelper.userAuthenticated(user, opts);
             } else {
                 opts.notAuthenticatedCb();
             }
@@ -36,11 +36,25 @@ export class FirebaseAuthHelper {
     }
 
     private static UI_INSTANCE: firebaseui.auth.AuthUI | undefined = undefined;
+
+    private static userAuthenticated(user: FirebaseAuthHelper.User, opts: FirebaseAuthHelper.InitializeOptions) {
+        FirebaseAuthHelper.ensureUserRegistered(user)
+            .then(() => opts.authenticatedCb(user))
+            .catch(err => opts.errorCb(err.message));
+    }
+
+    private static async ensureUserRegistered(user: FirebaseAuthHelper.User) {
+        const userExists = await FirestoreRolesHelper.roles().userExists(user.uid);
+        if (!userExists) {
+            await FirestoreRolesHelper.roles().registerUser(user);
+        }
+    }
 }
 
 export namespace FirebaseAuthHelper {
     export interface InitializeOptions {
         authenticatedCb: (user: FirebaseAuthHelper.User) => void;
+        errorCb: (msg: string) => void;
         notAuthenticatedCb: () => void;
     }
 
