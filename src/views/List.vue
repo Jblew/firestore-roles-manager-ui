@@ -7,8 +7,6 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { config, labels, s } from "../global";
-
 export default Vue.extend({
     data() {
         return {};
