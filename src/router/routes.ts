@@ -1,4 +1,4 @@
 export const routes = {
-    home: { path: "/", name: "list" },
+    home: { path: "/", name: "rolesList" },
     auth: { path: "/auth", name: "auth" },
 };

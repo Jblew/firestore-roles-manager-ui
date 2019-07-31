@@ -1,6 +1,6 @@
 <template>
-  <div class="advicelist">
-    <h1 class="mb-3 ml-2">List</h1>
+  <div>
+    <h1 class="mb-3 ml-2">Roles list</h1>
   </div>
 </template>
 
