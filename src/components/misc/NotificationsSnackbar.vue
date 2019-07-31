@@ -1,0 +1,36 @@
+<template>
+  <div>
+    <v-snackbar :model="opened" :color="this.color">{{ message }}</v-snackbar>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from "vue";
+
+import { labels } from "../../global";
+import { NotificationsModule } from "../../store/modules/notifications/NotificationsModule";
+
+export default Vue.extend({
+    data() {
+        return {
+            text: {
+                signOut: labels.logOut,
+            },
+        };
+    },
+    computed: {
+        opened(): boolean {
+            return NotificationsModule.stateOf(this).notifications.length > 0;
+        },
+        message(): string {
+            return this.opened ? NotificationsModule.stateOf(this).notifications[0].message : "";
+        },
+        params(): any {
+            return this.opened ? NotificationsModule.stateOf(this).notifications[0].params : {};
+        },
+        color(): string | undefined {
+            return this.params.color || undefined;
+        },
+    },
+});
+</script>

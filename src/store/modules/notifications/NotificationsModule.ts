@@ -2,9 +2,14 @@
 
 import { ow_catch } from "@/util/util";
 import ow from "ow";
+import { CombinedVueInstance } from "vue/types/vue";
+import { Action as VuexAction, ActionContext as VuexActionContext, Dispatch } from "vuex";
+
+type ActionFn = VuexAction<NotificationsModule.State, NotificationsModule.State>;
+type ActionContext = VuexActionContext<NotificationsModule.State, NotificationsModule.State>;
 
 export namespace NotificationsModule {
-    export const modulePathName = "vnotifications";
+    export const modulePathName = "notifications";
     export function localName(name: string) {
         return modulePathName + "_" + name;
     }
@@ -31,8 +36,25 @@ export namespace NotificationsModule {
     /**
      * Actions
      */
-    export class Actions {
-        public static showNotification = localName("showNotification");
+    export namespace Actions {
+        export namespace Initialize {
+            export const name = localName("initialize");
+            export type Declaration = ActionFn & ((c: ActionContext) => void);
+
+            export function dispatch(dispatchFn: Dispatch) {
+                return dispatchFn(name);
+            }
+        }
+
+        export namespace ShowNotification {
+            export const name = localName("showNotification");
+            export type Payload = Notification;
+            export type Declaration = ActionFn & ((c: ActionContext, payload: Payload) => void);
+
+            export function dispatch(dispatchFn: Dispatch, payload: Payload) {
+                return dispatchFn(name, payload);
+            }
+        }
     }
 
     /**
@@ -70,5 +92,12 @@ export namespace NotificationsModule {
             ow(n.message, "CommitedNotification.message", ow.string.nonEmpty);
             ow(n.timestampGoneMs, "CommitedNotification.timestampGoneMs", ow.number.integer.finite.positive);
         }
+    }
+
+    /**
+     * State tye guard
+     */
+    export function stateOf(vueInstance: CombinedVueInstance<any, any, any, any, any>): State {
+        return vueInstance.$store[modulePathName].state;
     }
 }

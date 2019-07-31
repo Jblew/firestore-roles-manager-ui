@@ -1,11 +1,14 @@
-import { Action as VuexAction, ActionTree } from "vuex";
+import { ActionTree } from "vuex";
 
 import { Mutations } from "./Mutations";
 import { NotificationsModule as Me } from "./NotificationsModule";
+import { PrivateActions } from "./PrivateActions";
 
-type ActionFn = VuexAction<Me.State, Me.State>;
-
-const showNotification: ActionFn = ({ commit, state }, payload: Me.Notification) => {
+/**
+ *
+ * Actions implementation
+ */
+const showNotification: Me.Actions.ShowNotification.Declaration = ({ commit, state }, payload: Me.Notification) => {
     Me.Notification.validate(payload);
 
     const commitedNotification: Me.CommitedNotification = {
@@ -18,6 +21,23 @@ const showNotification: ActionFn = ({ commit, state }, payload: Me.Notification)
     commit(Mutations.setNotifications, newNotifications);
 };
 
+const initialize: Me.Actions.Initialize.Declaration = ({ dispatch }): void => {
+    setInterval(() => {
+        PrivateActions.RemoveTimedOut.dispatch(dispatch);
+    }, 500);
+};
+
+const removeTimedOut: PrivateActions.RemoveTimedOut.Declaration = ({ commit, state }): void => {
+    const filteredNotifications = state.notifications.filter(n => n.timestampGoneMs > Date.now());
+    commit(Mutations.setNotifications, filteredNotifications);
+};
+
+/**
+ *
+ * Type safe definitions and export
+ */
 export const actions: ActionTree<Me.State, Me.State> = {
-    [Me.Actions.showNotification]: showNotification,
+    [Me.Actions.ShowNotification.name]: showNotification,
+    [Me.Actions.Initialize.name]: initialize,
+    [PrivateActions.RemoveTimedOut.name]: removeTimedOut,
 };
