@@ -1,3 +1,5 @@
+import "firebase/app";
+import "firebase/firestore";
 import "firebaseui/dist/firebaseui.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css"; // Ensure you are using css-loader
 import "typeface-roboto"; // offline version of roboto font
