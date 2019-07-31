@@ -1,0 +1,9 @@
+{
+    "firestore": {
+      "rules": "deploy.firestore.rules"
+    },
+    "emulators": {
+      "firestore": {
+      }
+    }
+  }
