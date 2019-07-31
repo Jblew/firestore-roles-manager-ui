@@ -23,7 +23,7 @@ export namespace Configuration {
         FirestoreRolesConfiguration.validate(c.roles, "Configuration.roles ");
     }
 
-    export function load(): Configuration {
+    export function get(): Configuration {
         if (!window.ROLES_CONFIGURATION) throw new Error("You must set the window.ROLES_CONFIGURATION env");
         return window.ROLES_CONFIGURATION;
     }
