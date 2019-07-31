@@ -3,7 +3,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import * as firebaseui from "firebaseui";
-import { Configuration } from "@/Configuration";
+import { Configuration } from "@/config/Configuration";
 
 export class FirebaseAuthHelper {
     public static initialize(opts: FirebaseAuthHelper.InitializeOptions) {

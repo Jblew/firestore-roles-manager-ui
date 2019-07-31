@@ -8,6 +8,7 @@ export interface Configuration {
         databaseURL: string;
         projectId: string;
     };
+    authProviders: string[];
     roles: FirestoreRolesConfiguration;
 }
 
@@ -29,5 +30,7 @@ export namespace Configuration {
 }
 
 declare global {
-    interface Window { ROLES_CONFIGURATION: Configuration; }
+    interface Window {
+        ROLES_CONFIGURATION: Configuration;
+    }
 }
