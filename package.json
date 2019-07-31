@@ -1,7 +1,7 @@
 {
   "name": "firestore-roles-manager-ui",
+  "description": "UI for roles management with firestore-roles system",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -14,13 +14,41 @@
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "firebase": "^6.3.3",
+    "firebaseui": "^4.1.0",
+    "material-design-icons-iconfont": "^5.0.1",
+    "ow": "^0.13.2",
+    "vuetify": "^1.5.16",
+    "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-typescript": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
+    "@types/chai": "^4.1.0",
+    "@types/mocha": "^5.2.4",
+    "@vue/cli-plugin-unit-mocha": "^3.9.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "typescript": "^3.4.3",
-    "vue-template-compiler": "^2.6.10"
-  }
+    "vue-template-compiler": "^2.6.10",
+    "jblew-tslint-config": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jblew/firestore-roles-manager-ui"
+  },
+  "keywords": [
+    "steem",
+    "blockchain",
+    "wise"
+  ],
+  "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com> (https://jedrzej.lewandowski.doctor/)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Jblew/firestore-roles-manager-ui/issues"
+  },
+  "homepage": "https://ameryka.jedrzej.lewandowski.doctor/"
 }
