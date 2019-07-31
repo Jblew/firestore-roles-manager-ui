@@ -1,9 +1,10 @@
 {
+  "firestore": {
+    "rules": "deploy.firestore.rules"
+  },
+  "emulators": {
     "firestore": {
-      "rules": "deploy.firestore.rules"
-    },
-    "emulators": {
-      "firestore": {
-      }
+      "port": "8079"
     }
   }
+}

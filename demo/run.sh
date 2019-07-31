@@ -5,6 +5,6 @@ cd "${DIR}"
 
 npx firestore-rules generate demo/config.js demo/project.firestore.rules demo/deploy.firestore.rules
 
-cd demo && firebase emulators:start --only firestore &
+cd demo && firebase emulators:start &
 
 npm run serve

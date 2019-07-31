@@ -22,7 +22,7 @@ export default Vue.extend({
     data() {
         return {
             colors: {
-                secondary: visualConfig.colors.secondary,
+                secondary: visualConfig.colors.accent,
             },
             text: {
                 logIn: labels.logIn,
