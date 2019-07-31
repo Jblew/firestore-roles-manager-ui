@@ -4,7 +4,7 @@
       <v-list class="pa-0 pb-0 mb-0">
         <v-list-tile avatar>
           <v-list-tile-avatar>
-            <img :src="photoUrl" v-if="photoUrl.length > 0">
+            <img :src="photoUrl" v-if="photoUrl.length > 0" />
             <v-icon v-else>person</v-icon>
           </v-list-tile-avatar>
 
@@ -29,7 +29,7 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { labels, s } from "../../global";
+import { labels, Store } from "../../global";
 import { AuthModule } from "../../store/modules/auth/AuthModule";
 
 export default Vue.extend({
@@ -43,18 +43,18 @@ export default Vue.extend({
     },
     computed: {
         authenticated(): boolean {
-            return s(this.$store).state.auth.state === AuthModule.AuthState.AUTHENTICATED;
+            return Store.of(this).state.auth.state === AuthModule.AuthState.AUTHENTICATED;
         },
         photoUrl(): string {
-            return s(this.$store).state.auth.profileImageURL || "";
+            return Store.of(this).state.auth.profileImageURL || "";
         },
         name(): string {
-            return s(this.$store).state.auth.username || "";
+            return Store.of(this).state.auth.username || "";
         },
     },
     methods: {
         signOut() {
-            s(this.$store).dispatch(AuthModule.Actions.logout);
+            Store.of(this).dispatch(AuthModule.Actions.logout);
         },
     },
 });

@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { config, labels, s, visualConfig } from "../global";
+import { config, labels, Store, visualConfig } from "../global";
 import { FirebaseAuthHelper } from "../helper/FirebaseAuthHelper";
 import { routes } from "../router/routes";
 import { AuthModule } from "../store/modules/auth/AuthModule";
@@ -35,7 +35,7 @@ export default Vue.extend({
     },
     computed: {
         loading(): boolean {
-            return s(this.$store).state.auth.state === AuthModule.AuthState.LOADING;
+            return Store.of(this).state.auth.state === AuthModule.AuthState.LOADING;
         },
     },
 });

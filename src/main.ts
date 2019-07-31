@@ -11,7 +11,8 @@ import "./filters";
 import router from "./router/router";
 import { routes } from "./router/routes";
 import { AuthModule } from "./store/modules/auth/AuthModule";
-import { Actions, s, store } from "./store/store";
+import { RootStore, Store } from "./store/Store";
+import { StoreImpl } from "./store/StoreImpl";
 
 Vue.config.productionTip = false;
 
@@ -20,11 +21,11 @@ Vue.use(Vuetify);
 
 new Vue({
     router,
-    store,
+    store: StoreImpl.store,
     render: h => h(App),
     computed: {
         authState(): AuthModule.AuthState {
-            return s(this.$store).state.auth.state;
+            return Store.of(this).state.auth.state;
         },
     },
     watch: {
@@ -37,7 +38,7 @@ new Vue({
         },
     },
     created() {
-        this.$store.dispatch(Actions.initialize);
+        this.$store.dispatch(RootStore.Actions.initialize);
     },
     mounted() {
         //
