@@ -1,6 +1,6 @@
 // tslint:disable member-ordering
 import firebase from "firebase/app";
-import FirestoreRoles from "firestore-roles";
+import FirestoreRoles, { AccountRecord } from "firestore-roles";
 import * as _ from "lodash";
 
 import { Configuration } from "../config/Configuration";
@@ -30,9 +30,16 @@ export class FirestoreRolesAdapter {
         return await this.firestoreRoles.userExists(uid);
     }
 
-    public async registerUser(account: firebase.UserInfo) {
-        console.log("Register user ", account);
-        // return await this.firestoreRoles.registerUser(account);
+    public async registerUser(userInfo: firebase.UserInfo) {
+        const account: AccountRecord = {
+            uid: userInfo.uid,
+            displayName: userInfo.displayName,
+            email: userInfo.email,
+            providerId: userInfo.providerId,
+            phoneNumber: null, // skip phone number in db
+            photoURL: userInfo.photoURL,
+        };
+        return await this.firestoreRoles.registerUser(account);
     }
 
     public async getUidsInRole(role: string) {
