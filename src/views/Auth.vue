@@ -8,8 +8,8 @@
             <v-toolbar-title v-else>{{ text.logIn }}...</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <div v-if="loading" class="text-xs-center">
-              <v-progress-circular :size="70" :width="7" :color="colors.secondary" indeterminate></v-progress-circular>
+            <div v-if="loading" class="text-center px-5 py-5">
+              <v-progress-circular :size="70" :width="7" color="accent" indeterminate></v-progress-circular>
             </div>
             <div id="firebaseui-auth-container"></div>
           </v-card-text>
@@ -30,9 +30,6 @@ import { AuthModule } from "../store/modules/auth/AuthModule";
 export default Vue.extend({
     data() {
         return {
-            colors: {
-                secondary: visualConfig.colors.accent,
-            },
             text: {
                 logIn: labels.logIn,
                 loading: labels.loading,
