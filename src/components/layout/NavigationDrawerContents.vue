@@ -15,12 +15,13 @@
 </template>
 
 <script lang="ts">
-// @ts-check
-
 import Vue from "vue";
 
-import { labels } from "../global";
-import { routes } from "../router/routes";
+import { labels } from "../../global";
+import { routes } from "../../router/routes";
+
+import MaterialDrawerTileRouter from "./MaterialDrawerTileRouter.vue";
+import ProfileComponent from "./ProfileComponent.vue";
 
 export default Vue.extend({
     props: [],
@@ -36,7 +37,10 @@ export default Vue.extend({
     },
     methods: {},
     computed: {},
-    components: {},
+    components: {
+        MaterialDrawerTileRouter,
+        ProfileComponent,
+    },
 });
 </script>
 

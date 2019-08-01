@@ -1,7 +1,7 @@
 <template>
-  <v-footer height="auto" :color="colors.primary">
+  <v-footer app height="auto" color="secondary">
     <v-layout justify-center row wrap>
-      <v-flex dark text-xs-center white--text xs12 caption>
+      <v-flex text-center xs12 caption>
         &copy; {{ yearStr }} by
         <a :href="links.author" target="_blank">{{ text.author }}</a>
       </v-flex>
@@ -14,7 +14,7 @@
 
 import Vue from "vue";
 
-import { visualConfig } from "../global";
+import { visualConfig } from "../../global";
 
 export default Vue.extend({
     props: [],
@@ -25,9 +25,6 @@ export default Vue.extend({
             },
             links: {
                 author: visualConfig.author.link,
-            },
-            colors: {
-                primary: visualConfig.colors.primary,
             },
         };
     },

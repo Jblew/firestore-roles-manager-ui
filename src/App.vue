@@ -1,21 +1,10 @@
 <template>
-  <v-app id="inspire app">
-    <v-navigation-drawer v-model="drawer" clipped fixed app>
-      <navigation-drawer-contents />
-    </v-navigation-drawer>
-    <v-toolbar app fixed clipped-left :color="colors.primary" dark>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{ text.appTitle }}</v-toolbar-title>
-    </v-toolbar>
-    <v-content>
-      <v-container fluid fill-height>
-        <v-layout justify-center align-start>
-          <v-flex>
-            <router-view v-if="authenticated" />
-            <auth-view v-else />
-          </v-flex>
-        </v-layout>
-      </v-container>
+  <v-app id="app">
+    <drawer-layout v-if="authenticated">
+      <router-view />
+    </drawer-layout>
+    <v-content v-else>
+      <auth-view />
     </v-content>
     <footer-component />
   </v-app>
@@ -26,8 +15,8 @@
 
 import Vue from "vue";
 
-import FooterComponent from "./components/Footer.vue";
-import NavigationDrawerContents from "./components/NavigationDrawerContents.vue";
+import DrawerLayout from "./components/layout/DrawerLayout.vue";
+import FooterComponent from "./components/layout/Footer.vue";
 import { Store, visualConfig } from "./global";
 import { AuthModule } from "./store/modules/auth/AuthModule";
 import AuthView from "./views/Auth.vue";
@@ -51,8 +40,8 @@ export default Vue.extend({
     },
     components: {
         AuthView,
+        DrawerLayout,
         FooterComponent,
-        NavigationDrawerContents,
     },
 });
 </script>
