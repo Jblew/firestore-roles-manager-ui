@@ -90,6 +90,15 @@ export namespace RolesModule {
             ow(n.displayName, "AccountLoaderRow.displayName", ow.string);
             ow(n.requesting, "AccountLoaderRow.requesting", ow.boolean);
         }
+
+        export const KEYS: { [x in keyof AccountLoaderRow]: keyof AccountLoaderRow } = Object.freeze({
+            displayName: "displayName",
+            email: "email",
+            requesting: "requesting",
+            uid: "uid",
+            loading: "loading",
+            error: "error",
+        });
     }
 
     /**
