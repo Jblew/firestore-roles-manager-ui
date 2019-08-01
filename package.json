@@ -11,7 +11,7 @@
     "core-js": "^2.6.5",
     "firebase": "^6.3.3",
     "firebaseui": "^4.1.0",
-    "firestore-roles": "^2.0.0",
+    "firestore-roles": "^2.0.1",
     "lodash": "^4.17.15",
     "material-design-icons-iconfont": "^5.0.1",
     "ow": "^0.13.2",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@mdi/font": "^3.8.95",
     "@types/chai": "^4.1.0",
+    "@types/lodash": "^4.14.136",
     "@types/mocha": "^5.2.4",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-typescript": "^3.9.0",

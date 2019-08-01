@@ -3,7 +3,7 @@
 import firebase from "firebase/app";
 import * as firebaseui from "firebaseui";
 import { Configuration } from "@/config/Configuration";
-import { FirestoreRolesHelper } from "./FirestoreRolesHelper";
+import { FirestoreRolesAdapter } from "../adapter/FirestoreRolesAdapter";
 
 export class FirebaseAuthHelper {
     public static initialize(opts: FirebaseAuthHelper.InitializeOptions) {
@@ -58,12 +58,11 @@ export class FirebaseAuthHelper {
             });
     }
 
-    private static async ensureUserRegistered(user: FirebaseAuthHelper.User) {
+    private static async ensureUserRegistered(user: FirebaseAuthHelper.User): Promise<void> {
         console.log("Calling user exists on uid " + user.uid);
-        const userExists = await FirestoreRolesHelper.roles().userExists(user.uid);
+        const userExists = await FirestoreRolesAdapter.getInstance().userExists(user.uid);
         if (!userExists) {
-            console.error("User does not exist");
-            // await FirestoreRolesHelper.roles().registerUser(user);
+            await FirestoreRolesAdapter.getInstance().registerUser(user);
         } else {
             console.log("User already exists");
         }
