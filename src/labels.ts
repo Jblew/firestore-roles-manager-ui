@@ -7,4 +7,9 @@ export const labels = {
     couldNotLoadAccounts: "Could not load accounts",
     thisIsAFreeSoftware: "This program is a free software",
     getSource: "get source",
+    error: "error",
+    name: "Name",
+    actions: "Actions",
+    uid: "User id",
+    email: "Email",
 };

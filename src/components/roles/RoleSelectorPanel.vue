@@ -8,6 +8,7 @@
             v-for="role in availableRoles"
             :key="role"
             :color="role === selectedRole ? 'accent' : 'black'"
+            :disabled="!buttonsActive"
             @click="reloadAccounts(role)"
           >{{ role | capitalize }}</v-btn>
         </v-card-actions>
