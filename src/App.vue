@@ -49,4 +49,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+#app {
+    background: #303030 url("~@/assets/bg.jpg") no-repeat bottom left;
+    background-size: 40%;
+}
 </style>
