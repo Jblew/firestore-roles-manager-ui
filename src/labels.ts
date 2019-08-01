@@ -12,4 +12,5 @@ export const labels = {
     actions: "Actions",
     uid: "User id",
     email: "Email",
+    request: "Request",
 };
