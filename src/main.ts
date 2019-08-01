@@ -28,9 +28,9 @@ new Vue({
     },
     watch: {
         authState(authState, oldAuthState) {
-            if (authState === AuthModule.AuthState.NOTAUTHENTICATED) {
-                this.$router.push(routes.auth.path);
-            } else if (authState === AuthModule.AuthState.AUTHENTICATED) {
+            console.log(`Auth state ${oldAuthState} -> ${authState}`);
+            if (authState === AuthModule.AuthState.AUTHENTICATED) {
+                this.$router.push(routes.home.path);
                 // this.$store.dispatch(ListModule.Actions.updateQueryFilterAndReloadList, {});
             }
         },

@@ -9,5 +9,5 @@ import { routes } from "./routes";
 Vue.use(Router);
 
 export default new Router({
-    routes: [{ ...routes.auth, component: Auth }, { ...routes.home, component: RolesList }],
+    routes: [{ ...routes.home, component: RolesList }],
 });
