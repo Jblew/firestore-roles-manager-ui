@@ -6,25 +6,11 @@ export const visualConfig = {
         link: "https://jedrzej.lewandowski.doctor/",
         display: "Jędrzej Lewandowski <jedrzejblew@gmail.com>",
     },
-    colors: {
-        primary: "#607D8B",
-        darkPrimary: "#455A64",
-        lightPrimary: "#CFD8DC",
-        textOnPrimary: "#FFFFFF",
-        accent: "#FFC107",
-        primaryText: "#212121",
-        secondaryText: "#757575",
-        divider: "#BDBDBD",
+    license: {
+        url: "https://www.gnu.org/licenses/gpl-3.0.html",
+        code: "GNU GPLv3",
+    },
+    source: {
+        url: "https://github.com/jblew/amerykahospital-personalizedadvice",
     },
 };
-
-/*
-$primary-color-dark:   #455A64
-$primary-color:        #607D8B
-$primary-color-light:  #CFD8DC
-$primary-color-text:   #FFFFFF
-$accent-color:         #FFC107
-$primary-text-color:   #212121
-$secondary-text-color: #757575
-$divider-color:        #BDBDBD
-*/

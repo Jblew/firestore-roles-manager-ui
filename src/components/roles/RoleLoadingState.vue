@@ -1,17 +1,10 @@
 <template>
-  <v-layout>
-    <v-flex xs12>
-      <v-card class="mb-3 elevation-1">
-        <v-card-actions>
-          <span class="px-3">{{ text. selectRole }}:</span>
-          <v-btn
-            v-for="role in availableRoles"
-            :key="role"
-            :color="role === selectedRole ? 'accent' : 'black'"
-            @click="reloadAccounts(role)"
-          >{{ role | capitalize }}</v-btn>
-        </v-card-actions>
-      </v-card>
+  <v-layout wrap class="py-5">
+    <v-flex v-if="loading" xs12 text-center class="my-2">
+      <loading-indicator />
+    </v-flex>
+    <v-flex v-if="error.length > 0" xs12 text-center class="my-2">
+      <v-alert type="error">{{ text.couldNotLoadAccounts }}. {{ error }}</v-alert>
     </v-flex>
   </v-layout>
 </template>
@@ -29,6 +22,7 @@ export default Vue.extend({
             availableRoles: FirestoreRolesAdapter.getInstance().getAvailableRoles(),
             text: {
                 selectRole: labels.selectRole,
+                couldNotLoadAccounts: labels.couldNotLoadAccounts,
             },
         };
     },
@@ -38,6 +32,9 @@ export default Vue.extend({
         },
         loading(): boolean {
             return RolesModule.stateOf(this).state.loading;
+        },
+        error(): string {
+            return RolesModule.stateOf(this).state.error;
         },
         buttonsActive(): boolean {
             return !this.loading;

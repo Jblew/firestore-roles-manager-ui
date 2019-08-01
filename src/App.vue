@@ -31,7 +31,6 @@ export default Vue.extend({
                 appTitle: visualConfig.appTitle,
             },
             drawer: null,
-            colors: visualConfig.colors,
         };
     },
     methods: {},

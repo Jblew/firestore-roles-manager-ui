@@ -31,7 +31,7 @@ export namespace RolesModule {
 
     export namespace State {
         export function validate(state: State) {
-            ow(state.role, "state.role", ow.string.nonEmpty);
+            ow(state.role, "state.role", ow.string);
 
             ow(state.state, "state.state", ow.object);
             ow(state.state.loading, "state.state.loading", ow.boolean);

@@ -3,6 +3,7 @@ import { ActionTree } from "vuex";
 
 import { FirestoreRolesAdapter } from "../../../adapter/FirestoreRolesAdapter";
 
+import { Mutations } from "./Mutations";
 import { RolesModule as Me } from "./RolesModule";
 
 /**
@@ -11,8 +12,10 @@ import { RolesModule as Me } from "./RolesModule";
  */
 const reloadAccounts: Me.Actions.ReloadAccounts.Declaration = ({ commit, state }, payload: { role: string }) => {
     ow(payload.role, ow.string.nonEmpty.is(r => FirestoreRolesAdapter.getInstance().isAvailableRole(r)));
+    const role = payload.role;
 
-    // to be continued
+    Mutations.SetRole.commit(commit, role);
+    Mutations.SetState.commit(commit, { loading: true, error: "" });
 };
 
 /**

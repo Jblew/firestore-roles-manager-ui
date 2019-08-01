@@ -1,12 +1,16 @@
 <template>
-  <div>
+  <v-container flex>
     <role-selector-panel />
-  </div>
+    <role-loading-state />
+    <role-accounts-table />
+  </v-container>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 
+import RoleAccountsTable from "../components/roles/RoleAccountsTable.vue";
+import RoleLoadingState from "../components/roles/RoleLoadingState.vue";
 import RoleSelectorPanel from "../components/roles/RoleSelectorPanel.vue";
 
 export default Vue.extend({
@@ -16,6 +20,8 @@ export default Vue.extend({
     methods: {},
     components: {
         RoleSelectorPanel,
+        RoleAccountsTable,
+        RoleLoadingState,
     },
 });
 </script>

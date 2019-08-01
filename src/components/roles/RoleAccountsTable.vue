@@ -1,19 +1,5 @@
 <template>
-  <v-layout>
-    <v-flex xs12>
-      <v-card class="mb-3 elevation-1">
-        <v-card-actions>
-          <span class="px-3">{{ text. selectRole }}:</span>
-          <v-btn
-            v-for="role in availableRoles"
-            :key="role"
-            :color="role === selectedRole ? 'accent' : 'black'"
-            @click="reloadAccounts(role)"
-          >{{ role | capitalize }}</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <v-layout>Table...</v-layout>
 </template>
 
 <script lang="ts">

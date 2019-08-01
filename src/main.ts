@@ -7,6 +7,7 @@ import Vue from "vue";
 
 import { FirestoreRolesAdapter } from "./adapter/FirestoreRolesAdapter";
 import App from "./App.vue";
+import "./components/common/common_components";
 import "./filters";
 import vuetify from "./plugins/vuetify"; // path to vuetify export
 import router from "./router/router";
