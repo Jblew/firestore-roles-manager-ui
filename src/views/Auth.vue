@@ -8,10 +8,10 @@
             <v-toolbar-title v-else>{{ text.logIn }}...</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
+            <div id="firebaseui-auth-container"></div>
             <div v-if="loading" class="text-center px-5 py-5">
               <v-progress-circular :size="70" :width="7" color="accent" indeterminate></v-progress-circular>
             </div>
-            <div id="firebaseui-auth-container"></div>
           </v-card-text>
         </v-card>
       </v-flex>
@@ -22,7 +22,7 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { config, labels, Store, visualConfig } from "../global";
+import { config, labels, Store } from "../global";
 import { FirebaseAuthHelper } from "../helper/FirebaseAuthHelper";
 import { routes } from "../router/routes";
 import { AuthModule } from "../store/modules/auth/AuthModule";
