@@ -1,13 +1,22 @@
 <template>
-  <div>
-    <h1 v-if="loading">{{ text.loading }}...</h1>
-    <h1 v-else>{{ text.logIn }}</h1>
-
-    <div v-if="loading" class="text-xs-center">
-      <v-progress-circular :size="70" :width="7" :color="colors.secondary" indeterminate></v-progress-circular>
-    </div>
-    <div id="firebaseui-auth-container"></div>
-  </div>
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+      <v-flex xs12 sm8 md4>
+        <v-card class="elevation-12">
+          <v-toolbar color="primary" dark flat>
+            <v-toolbar-title v-if="loading">{{ text.loading }}...</v-toolbar-title>
+            <v-toolbar-title v-else>{{ text.logIn }}...</v-toolbar-title>
+          </v-toolbar>
+          <v-card-text>
+            <div v-if="loading" class="text-xs-center">
+              <v-progress-circular :size="70" :width="7" :color="colors.secondary" indeterminate></v-progress-circular>
+            </div>
+            <div id="firebaseui-auth-container"></div>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script lang="ts">
