@@ -44,4 +44,16 @@ export namespace Mutations {
             return commitFn(name, payload);
         }
     }
+
+    export namespace CacheAccount {
+        export const name = Me.localName("cacheAccount");
+
+        export type Payload = Me.AccountCacheRecord;
+
+        export type Declaration = MutationFn & ((state: Me.State, payload: Payload) => void);
+
+        export function commit(commitFn: Commit, payload: Payload) {
+            return commitFn(name, payload);
+        }
+    }
 }

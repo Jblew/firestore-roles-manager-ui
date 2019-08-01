@@ -50,6 +50,10 @@ export class FirestoreRolesAdapter {
         return await this.firestoreRoles.getUidsRequestingRole(role);
     }
 
+    public async getAccountRecord(uid: string): Promise<AccountRecord> {
+        return await this.firestoreRoles.getAccountRecord(uid);
+    }
+
     /**
      *
      * Singleton

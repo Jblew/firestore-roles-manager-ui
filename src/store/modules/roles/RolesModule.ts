@@ -1,6 +1,7 @@
 // tslint:disable:max-classes-per-file
 
 import { ow_catch } from "@/util/util";
+import { AccountRecord } from "firestore-roles";
 import ow from "ow";
 import { CombinedVueInstance } from "vue/types/vue";
 import { Action as VuexAction, ActionContext as VuexActionContext, Dispatch } from "vuex";
@@ -27,6 +28,9 @@ export namespace RolesModule {
             loadedForRole: string;
             accounts: AccountLoaderRow[];
         };
+        accountCache: {
+            [x: string]: AccountCacheRecord;
+        };
     }
 
     export namespace State {
@@ -44,6 +48,7 @@ export namespace RolesModule {
                 "state.data.requestingAccounts",
                 ow.array.ofType(ow.object.is(v => ow_catch(() => AccountLoaderRow.validate(v as AccountLoaderRow)))),
             );
+            ow(state.accountCache, "state.accountCache", ow.object.valuesOfType(ow.object));
         }
     }
 
@@ -74,31 +79,30 @@ export namespace RolesModule {
      */
     export interface AccountLoaderRow {
         uid: string;
-        loading: boolean;
-        error: string;
-        email: string;
-        displayName: string;
         requesting: boolean;
     }
 
     export namespace AccountLoaderRow {
         export function validate(n: AccountLoaderRow) {
             ow(n.uid, "AccountLoaderRow.uid", ow.string.nonEmpty);
-            ow(n.loading, "AccountLoaderRow.loading", ow.boolean);
-            ow(n.error, "AccountLoaderRow.error", ow.string);
-            ow(n.email, "AccountLoaderRow.email", ow.string);
-            ow(n.displayName, "AccountLoaderRow.displayName", ow.string);
             ow(n.requesting, "AccountLoaderRow.requesting", ow.boolean);
         }
 
         export const KEYS: { [x in keyof AccountLoaderRow]: keyof AccountLoaderRow } = Object.freeze({
-            displayName: "displayName",
-            email: "email",
-            requesting: "requesting",
             uid: "uid",
-            loading: "loading",
-            error: "error",
+            requesting: "requesting",
         });
+    }
+
+    /**
+     *
+     * AccountCacheRecord
+     */
+    export interface AccountCacheRecord {
+        uid: string;
+        error?: string;
+        loading?: boolean;
+        account?: AccountRecord;
     }
 
     /**

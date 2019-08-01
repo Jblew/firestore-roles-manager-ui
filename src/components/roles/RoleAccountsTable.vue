@@ -9,23 +9,7 @@
         class="elevation-1"
       >
         <template v-slot:item="props">
-          <tr :class="props.item.requesting ? 'grey': ''">
-            <td class="text-xs">
-              <v-progress-circular :size="12" :width="1" indeterminate v-if="props.item.loading" />
-              <span v-if="props.item.error.length > 0" class="red--text mx-2">{{ props.item.error }}</span>
-              {{ props.item.displayName }}
-              <v-chip
-                v-if="props.item.requesting"
-                color="accent"
-                class="mx-2"
-                label
-                small
-              >{{ text.request }}</v-chip>
-            </td>
-            <td class="text-xs">{{ props.item.email }}</td>
-            <td class="text-xs">{{ props.item.uid }}</td>
-            <td class="text-xs">...</td>
-          </tr>
+          <table-row :uid="props.item.uid" :requesting="props.item.requesting" />
         </template>
       </v-data-table>
     </v-flex>
@@ -39,6 +23,8 @@ import { FirestoreRolesAdapter } from "../../adapter/FirestoreRolesAdapter";
 import { labels } from "../../global";
 import { RolesModule } from "../../store/modules/roles/RolesModule";
 
+import TableRow from "./TableRow.vue";
+
 export default Vue.extend({
     data() {
         return {
@@ -48,17 +34,7 @@ export default Vue.extend({
                 request: labels.request,
                 actions: labels.actions,
             },
-            headers: [
-                {
-                    text: labels.name,
-                },
-                {
-                    text: labels.email,
-                    value: RolesModule.AccountLoaderRow.KEYS.error,
-                },
-                { text: labels.uid, value: RolesModule.AccountLoaderRow.KEYS.uid },
-                { text: labels.actions, value: RolesModule.AccountLoaderRow.KEYS.requesting },
-            ],
+            headers: [{ text: labels.name }, { text: labels.email }, { text: labels.uid }, { text: labels.actions }],
         };
     },
     computed: {
@@ -70,7 +46,9 @@ export default Vue.extend({
         },
     },
     methods: {},
-    components: {},
+    components: {
+      TableRow,
+    },
 });
 </script>
 <style scoped lang="scss">

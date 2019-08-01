@@ -10,6 +10,7 @@ export const state: Me.State = {
         loadedForRole: "",
         accounts: [],
     },
+    accountCache: {},
 };
 
 Me.State.validate(state);

@@ -38,8 +38,18 @@ const setData: Mutations.SetData.Declaration = (
     Me.State.validate(state);
 };
 
+const cacheAccount: Mutations.CacheAccount.Declaration = (state: Me.State, payload: Mutations.CacheAccount.Payload) => {
+    ow(payload, "payload", ow.object);
+    ow(payload.uid, "payload.uid", ow.string.nonEmpty);
+
+    state.accountCache = { ...state.accountCache, [payload.uid]: payload };
+
+    Me.State.validate(state);
+};
+
 export const mutations: MutationTree<Me.State> = {
     [Mutations.SetRole.name]: setRole,
     [Mutations.SetState.name]: setState,
     [Mutations.SetData.name]: setData,
+    [Mutations.CacheAccount.name]: cacheAccount,
 };
