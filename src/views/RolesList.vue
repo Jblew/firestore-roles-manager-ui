@@ -1,20 +1,22 @@
 <template>
-  <v-card>
-    <v-card-text>
-      <h1 class="mb-3 ml-2">Roles list</h1>Hehe
-    </v-card-text>
-  </v-card>
+  <div>
+    <role-selector-panel />
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+
+import RoleSelectorPanel from "../components/roles/RoleSelectorPanel.vue";
 
 export default Vue.extend({
     data() {
         return {};
     },
     methods: {},
-    components: {},
+    components: {
+        RoleSelectorPanel,
+    },
 });
 </script>
 <style scoped lang="scss">
