@@ -3,7 +3,7 @@
     <v-navigation-drawer v-model="drawer" clipped fixed app>
       <navigation-drawer-contents />
     </v-navigation-drawer>
-    <v-toolbar app fixed clipped-left color="#00885B" dark>
+    <v-toolbar app fixed clipped-left :color="colors.primary" dark>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>{{ text.appTitle }}</v-toolbar-title>
     </v-toolbar>
@@ -40,6 +40,7 @@ export default Vue.extend({
                 appTitle: visualConfig.appTitle,
             },
             drawer: null,
+            colors: visualConfig.colors,
         };
     },
     methods: {},

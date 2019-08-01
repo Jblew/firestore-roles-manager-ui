@@ -18,7 +18,7 @@ const showNotification: Me.Actions.ShowNotification.Declaration = ({ commit, sta
     };
 
     const newNotifications = [...state.notifications, commitedNotification];
-    commit(Mutations.setNotifications, newNotifications);
+    Mutations.SetNotifications.commit(commit, { notifications: newNotifications });
 };
 
 const initialize: Me.Actions.Initialize.Declaration = ({ dispatch }): void => {
@@ -29,7 +29,7 @@ const initialize: Me.Actions.Initialize.Declaration = ({ dispatch }): void => {
 
 const removeTimedOut: PrivateActions.RemoveTimedOut.Declaration = ({ commit, state }): void => {
     const filteredNotifications = state.notifications.filter(n => n.timestampGoneMs > Date.now());
-    commit(Mutations.setNotifications, filteredNotifications);
+    Mutations.SetNotifications.commit(commit, { notifications: filteredNotifications });
 };
 
 /**
