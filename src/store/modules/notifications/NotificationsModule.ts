@@ -98,6 +98,6 @@ export namespace NotificationsModule {
      * State tye guard
      */
     export function stateOf(vueInstance: CombinedVueInstance<any, any, any, any, any>): State {
-        return vueInstance.$store[modulePathName].state;
+        return vueInstance.$store.state[modulePathName];
     }
 }

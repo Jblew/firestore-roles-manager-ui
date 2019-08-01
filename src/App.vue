@@ -7,6 +7,7 @@
       <auth-view />
     </v-content>
     <footer-component />
+    <notifications-snackbar />
   </v-app>
 </template>
 
@@ -15,6 +16,7 @@
 
 import Vue from "vue";
 
+import NotificationsSnackbar from "./components/misc/NotificationsSnackbar.vue";
 import DrawerLayout from "./components/layout/DrawerLayout.vue";
 import FooterComponent from "./components/layout/Footer.vue";
 import { Store, visualConfig } from "./global";
@@ -42,6 +44,7 @@ export default Vue.extend({
         AuthView,
         DrawerLayout,
         FooterComponent,
+        NotificationsSnackbar,
     },
 });
 </script>
