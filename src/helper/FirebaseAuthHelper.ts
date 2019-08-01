@@ -1,4 +1,4 @@
-// tslint:disable:ordered-imports
+// tslint:disable:ordered-imports no-console
 
 import firebase from "firebase/app";
 import * as firebaseui from "firebaseui";
@@ -8,13 +8,21 @@ import { FirestoreRolesHelper } from "./FirestoreRolesHelper";
 export class FirebaseAuthHelper {
     public static initialize(opts: FirebaseAuthHelper.InitializeOptions) {
         firebase.initializeApp(Configuration.get().firebase);
-        firebase.auth().onAuthStateChanged((user: FirebaseAuthHelper.User | null) => {
-            if (user) {
-                FirebaseAuthHelper.userAuthenticated(user, opts);
-            } else {
-                opts.notAuthenticatedCb();
-            }
-        });
+        firebase.auth().onAuthStateChanged(
+            (user: FirebaseAuthHelper.User | null) => {
+                if (user) {
+                    console.log("FirebaseAuthHelper: authenticated");
+                    FirebaseAuthHelper.userAuthenticated(user, opts);
+                } else {
+                    opts.notAuthenticatedCb();
+                    console.log("FirebaseAuthHelper: not authenticated");
+                }
+            },
+            (error: firebase.auth.Error) => {
+                console.error(`Auth error: ${error.message}`);
+                opts.errorCb(error.message);
+            },
+        );
     }
 
     public static async signOut() {
@@ -38,15 +46,26 @@ export class FirebaseAuthHelper {
     private static UI_INSTANCE: firebaseui.auth.AuthUI | undefined = undefined;
 
     private static userAuthenticated(user: FirebaseAuthHelper.User, opts: FirebaseAuthHelper.InitializeOptions) {
+        console.log("FirebaseAuthHelper: Ensure user registered");
         FirebaseAuthHelper.ensureUserRegistered(user)
-            .then(() => opts.authenticatedCb(user))
-            .catch(err => opts.errorCb(err.message));
+            .then(() => {
+                console.log("Successfully registered user");
+                opts.authenticatedCb(user);
+            })
+            .catch(err => {
+                console.error(`Could not register user: ${err}`);
+                opts.errorCb(err.message);
+            });
     }
 
     private static async ensureUserRegistered(user: FirebaseAuthHelper.User) {
+        console.log("Calling user exists on uid " + user.uid);
         const userExists = await FirestoreRolesHelper.roles().userExists(user.uid);
         if (!userExists) {
-            await FirestoreRolesHelper.roles().registerUser(user);
+            console.error("User does not exist");
+            // await FirestoreRolesHelper.roles().registerUser(user);
+        } else {
+            console.log("User already exists");
         }
     }
 }
