@@ -8,6 +8,8 @@ import { AuthModule } from "./modules/auth/AuthModule";
 import { AuthModuleImpl } from "./modules/auth/AuthModuleImpl";
 import { NotificationsModule } from "./modules/notifications/NotificationsModule";
 import { NotificationsModuleImpl } from "./modules/notifications/NotificationsModuleImpl";
+import { RolesModule } from "./modules/roles/RolesModule";
+import { RolesModuleImpl } from "./modules/roles/RolesModuleImpl";
 import { RootStore } from "./root/RootStore";
 import { RootStoreImpl } from "./root/RootStoreImpl";
 import { Store } from "./Store";
@@ -19,6 +21,7 @@ export namespace StoreImpl {
         [AuthModule.modulePathName]: AuthModuleImpl.module,
         [AuthModule.modulePathName]: AuthModuleImpl.module,
         [NotificationsModule.modulePathName]: NotificationsModuleImpl.module,
+        [RolesModule.modulePathName]: RolesModuleImpl.module,
     };
 
     /**

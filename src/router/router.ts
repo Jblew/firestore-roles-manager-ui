@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import Auth from "../views/Auth.vue";
 import RolesList from "../views/RolesList.vue";
 
 import { routes } from "./routes";

@@ -22,6 +22,10 @@ export class FirestoreRolesAdapter {
         return this.availableRoles;
     }
 
+    public isAvailableRole(role: string) {
+        return this.availableRoles.indexOf(role) >= 0;
+    }
+
     public async userExists(uid: string) {
         return await this.firestoreRoles.userExists(uid);
     }

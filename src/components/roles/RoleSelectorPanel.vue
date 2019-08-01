@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+
 import { FirestoreRolesAdapter } from "../../adapter/FirestoreRolesAdapter";
 
 export default Vue.extend({
