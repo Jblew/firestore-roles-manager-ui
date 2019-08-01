@@ -4,6 +4,13 @@
       <v-flex text-center xs12 caption>
         &copy; {{ yearStr }} by
         <a :href="links.author" target="_blank">{{ text.author }}</a>
+
+        <v-divider vertical class="mx-3" />
+        <a :href="links.license">{{ text.licenseCode }}</a>
+
+        <v-divider vertical class="mx-3" />
+        {{ text.thisIsAFreeSoftware }}:
+        <a :href="links.source">{{ text.getSource }}</a>
       </v-flex>
     </v-layout>
   </v-footer>
@@ -14,7 +21,7 @@
 
 import Vue from "vue";
 
-import { visualConfig } from "../../global";
+import { labels, visualConfig } from "../../global";
 
 export default Vue.extend({
     props: [],
@@ -22,9 +29,14 @@ export default Vue.extend({
         return {
             text: {
                 author: visualConfig.author.display,
+                licenseCode: visualConfig.license.code,
+                thisIsAFreeSoftware: labels.thisIsAFreeSoftware,
+                getSource: labels.getSource,
             },
             links: {
                 author: visualConfig.author.link,
+                license: visualConfig.license.url,
+                source: visualConfig.source.url,
             },
         };
     },
