@@ -16,9 +16,9 @@
 
 import Vue from "vue";
 
-import NotificationsSnackbar from "./components/misc/NotificationsSnackbar.vue";
 import DrawerLayout from "./components/layout/DrawerLayout.vue";
 import FooterComponent from "./components/layout/Footer.vue";
+import NotificationsSnackbar from "./components/misc/NotificationsSnackbar.vue";
 import { Store, visualConfig } from "./global";
 import { AuthModule } from "./store/modules/auth/AuthModule";
 import AuthView from "./views/Auth.vue";
