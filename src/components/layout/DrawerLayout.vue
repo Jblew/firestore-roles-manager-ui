@@ -9,8 +9,8 @@
     </v-app-bar>
     <v-content>
       <v-container fluid fill-height>
-        <v-layout justify-center align-center>
-          <v-flex shrink>
+        <v-layout justify-center align-start>
+          <v-flex>
             <slot></slot>
           </v-flex>
         </v-layout>
