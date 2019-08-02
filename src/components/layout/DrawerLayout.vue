@@ -1,6 +1,6 @@
 <template>
   <span>
-    <v-navigation-drawer v-model="drawer" clipped fixed app>
+    <v-navigation-drawer v-model="drawer" clipped fixed app temporary>
       <navigation-drawer-contents />
     </v-navigation-drawer>
     <v-app-bar app fixed color="primary">

@@ -50,7 +50,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 #app {
-    background: #303030 url("~@/assets/bg.jpg") no-repeat bottom left;
-    background-size: 40%;
+    background: #303030 url("~@/assets/goya_ridiculous_folly_bg.jpg") no-repeat bottom left;
+    background-size: 70%;
 }
 </style>
