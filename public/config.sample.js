@@ -9,6 +9,7 @@ window.ROLES_CONFIGURATION = {
     roles: {
         accountsCollection: "accounts",
         roleCollectionPrefix: "role_",
+        roleRequestsCollectionPrefix: "rolereq_",
         roles: {
             admin: {
                 manages: ["manager", "editor", "reviewer"]
