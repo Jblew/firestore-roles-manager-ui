@@ -14,13 +14,8 @@
         <reject-request-action :uid="uid" :displayName="displayName" :email="email" :role="role" />&nbsp;
       </span>
       <span v-else>
-        <v-btn small class="mx-1 mb-1">
-          <v-icon small>delete</v-icon>
-        </v-btn>
+        <revoke-role-action :uid="uid" :displayName="displayName" :email="email" :role="role" />
       </span>
-      <v-btn small class="mx-1 mb-1">
-        <v-icon small>build</v-icon>
-      </v-btn>
     </td>
   </tr>
 </template>
@@ -34,6 +29,7 @@ import { RolesModule } from "../../store/modules/roles/RolesModule";
 
 import AcceptRequestAction from "./AcceptRequestAction.vue";
 import RejectRequestAction from "./RejectRequestAction.vue";
+import RevokeRoleAction from "./RevokeRoleAction.vue";
 
 export default Vue.extend({
     props: {
@@ -74,6 +70,7 @@ export default Vue.extend({
     components: {
         AcceptRequestAction,
         RejectRequestAction,
+        RevokeRoleAction,
     },
 });
 </script>
