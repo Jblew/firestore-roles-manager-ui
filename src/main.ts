@@ -2,7 +2,6 @@ import "@mdi/font/css/materialdesignicons.css";
 import "firebase/app";
 import "firebase/firestore";
 import "firebaseui/dist/firebaseui.css";
-import "typeface-roboto"; // offline version of roboto font
 import Vue from "vue";
 
 import App from "./App.vue";
