@@ -11,9 +11,7 @@
     <td class="text-xs actions-field">
       <span v-if="requesting">
         <accept-request-action :uid="uid" :displayName="displayName" :email="email" :role="role" />
-        <v-btn small class="mx-1 mb-1">
-          <v-icon small>close</v-icon>
-        </v-btn>
+        <reject-request-action :uid="uid" :displayName="displayName" :email="email" :role="role" />&nbsp;
       </span>
       <span v-else>
         <v-btn small class="mx-1 mb-1">
@@ -35,6 +33,7 @@ import { labels, showNotification } from "../../global";
 import { RolesModule } from "../../store/modules/roles/RolesModule";
 
 import AcceptRequestAction from "./AcceptRequestAction.vue";
+import RejectRequestAction from "./RejectRequestAction.vue";
 
 export default Vue.extend({
     props: {
@@ -74,6 +73,7 @@ export default Vue.extend({
     methods: {},
     components: {
         AcceptRequestAction,
+        RejectRequestAction,
     },
 });
 </script>

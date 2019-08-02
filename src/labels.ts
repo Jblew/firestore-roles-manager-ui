@@ -14,8 +14,13 @@ export const labels = {
     email: "Email",
     request: "Request",
     confirmRoleRequest: "Confirm role request",
+    rejectRoleRequest: "Reject role request",
     confirmRoleRequestTemplate: "Do you want to grant role '$role' to user '$displayName <$email>' (uid: $uid)?",
+    rejectRoleRequestTemplate:
+        "Do you want to reject role '$role' request by user '$displayName <$email>' (uid: $uid)?",
     grant: "Grant",
     cancel: "Cancel",
+    reject: "Reject",
     successfullyGrantedRole: "Successfully granted role",
+    successfullyRejectedRole: "Successfully rejected role",
 };
