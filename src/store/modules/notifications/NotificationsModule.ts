@@ -1,9 +1,10 @@
 // tslint:disable:max-classes-per-file
 
-import { ow_catch } from "../../../util/util";
 import ow from "ow";
 import { CombinedVueInstance } from "vue/types/vue";
 import { Action as VuexAction, ActionContext as VuexActionContext, Dispatch } from "vuex";
+
+import { ow_catch } from "../../../util/util";
 
 type ActionFn = VuexAction<NotificationsModule.State, NotificationsModule.State>;
 type ActionContext = VuexActionContext<NotificationsModule.State, NotificationsModule.State>;

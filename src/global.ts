@@ -1,6 +1,7 @@
+import { CombinedVueInstance } from "vue/types/vue";
+
 import { Configuration } from "./config/Configuration";
 import { NotificationsModule } from "./store/modules/notifications/NotificationsModule";
-import { CombinedVueInstance } from "vue/types/vue";
 
 export { labels } from "./labels";
 export { Store } from "./store/Store";

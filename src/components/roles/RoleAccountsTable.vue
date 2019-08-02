@@ -30,8 +30,8 @@ import { FirestoreRolesAdapter } from "../../adapter/FirestoreRolesAdapter";
 import { labels } from "../../global";
 import { RolesModule } from "../../store/modules/roles/RolesModule";
 
-import TableRow from "./TableRow.vue";
 import GrantRoleAction from "./GrantRoleAction.vue";
+import TableRow from "./TableRow.vue";
 
 export default Vue.extend({
     data() {
