@@ -74,7 +74,7 @@
     "firestore-roles"
   ],
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com> (https://jedrzej.lewandowski.doctor/)",
-  "license": "MIT",
+  "license": "GPLv3",
   "bugs": {
     "url": "https://github.com/Jblew/firestore-roles-manager-ui/issues"
   },
