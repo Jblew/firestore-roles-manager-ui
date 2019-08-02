@@ -19,6 +19,7 @@ export const labels = {
     rejectRoleRequestTemplate:
         "Do you want to reject role '$role' request by user '$displayName <$email>' (uid: $uid)?",
     revokeRoleTemplate: "Do you want to revoke role '$role' from user '$displayName <$email>' (uid: $uid)?",
+    grantRoleTemplate: "Do you want to grant role '$role' to user with uid '$uid'?",
     grant: "Grant",
     cancel: "Cancel",
     reject: "Reject",
@@ -26,4 +27,6 @@ export const labels = {
     successfullyRejectedRole: "Successfully rejected role",
     revokeRole: "Revoke role",
     revoke: "Revoke",
+    grantRole: "Grant role",
+    pleaseSelectRole: "Please select a role",
 };

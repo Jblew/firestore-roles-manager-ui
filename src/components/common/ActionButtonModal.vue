@@ -12,6 +12,10 @@
       <v-card>
         <v-card-title>{{ title }}</v-card-title>
 
+        <v-card-text v-if="hasContentSlot">
+          <slot></slot>
+        </v-card-text>
+
         <v-card-text>{{ questionText }}</v-card-text>
 
         <v-divider v-if="loading || error"></v-divider>
@@ -66,8 +70,11 @@ export default Vue.extend({
     data() {
         return {};
     },
-    methods: {},
-    components: {},
+    computed: {
+        hasContentSlot() {
+            return !!this.$slots.default;
+        },
+    },
 });
 </script>
 <style scoped lang="scss">
