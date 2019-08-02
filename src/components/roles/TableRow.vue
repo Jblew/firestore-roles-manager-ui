@@ -24,7 +24,7 @@
 import { AccountRecord } from "firestore-roles";
 import Vue from "vue";
 
-import { labels, showNotification } from "../../global";
+import { labels } from "../../global";
 import { RolesModule } from "../../store/modules/roles/RolesModule";
 
 import AcceptRequestAction from "./AcceptRequestAction.vue";

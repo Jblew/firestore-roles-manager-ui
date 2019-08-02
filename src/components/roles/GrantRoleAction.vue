@@ -44,7 +44,7 @@ export default Vue.extend({
     },
     computed: {
         questionText() {
-            return labels.grantRoleTemplate.replace("$role", this.role).replace("$uid", this.uid);
+            return labels.grantRoleTemplate.replace("$role", this.role).replace("$uid", (this as any).uid);
         },
     },
     methods: {

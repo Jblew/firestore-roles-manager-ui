@@ -72,7 +72,7 @@ export default Vue.extend({
     },
     computed: {
         hasContentSlot() {
-            return !!this.$slots.default;
+            return !!(this.$slots as any).default;
         },
     },
 });
