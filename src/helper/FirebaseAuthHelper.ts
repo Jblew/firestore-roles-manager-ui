@@ -3,7 +3,6 @@
 import firebase from "firebase/app";
 import * as firebaseui from "firebaseui";
 import { Configuration } from "@/config/Configuration";
-import { FirestoreRolesAdapter } from "../adapter/FirestoreRolesAdapter";
 
 export class FirebaseAuthHelper {
     public static initialize(opts: FirebaseAuthHelper.InitializeOptions) {
@@ -12,7 +11,7 @@ export class FirebaseAuthHelper {
             (user: FirebaseAuthHelper.User | null) => {
                 if (user) {
                     console.log("FirebaseAuthHelper: authenticated");
-                    FirebaseAuthHelper.userAuthenticated(user, opts);
+                    opts.authenticatedCb(user);
                 } else {
                     opts.notAuthenticatedCb();
                     console.log("FirebaseAuthHelper: not authenticated");
@@ -44,29 +43,6 @@ export class FirebaseAuthHelper {
     }
 
     private static UI_INSTANCE: firebaseui.auth.AuthUI | undefined = undefined;
-
-    private static userAuthenticated(user: FirebaseAuthHelper.User, opts: FirebaseAuthHelper.InitializeOptions) {
-        console.log("FirebaseAuthHelper: Ensure user registered");
-        FirebaseAuthHelper.ensureUserRegistered(user)
-            .then(() => {
-                console.log("Successfully registered user");
-                opts.authenticatedCb(user);
-            })
-            .catch(err => {
-                console.error(`Could not register user: ${err}`);
-                opts.errorCb(err.message);
-            });
-    }
-
-    private static async ensureUserRegistered(user: FirebaseAuthHelper.User): Promise<void> {
-        console.log("Calling user exists on uid " + user.uid);
-        const userExists = await FirestoreRolesAdapter.getInstance().userExists(user.uid);
-        if (!userExists) {
-            await FirestoreRolesAdapter.getInstance().registerUser(user);
-        } else {
-            console.log("User already exists");
-        }
-    }
 }
 
 export namespace FirebaseAuthHelper {
