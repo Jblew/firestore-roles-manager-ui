@@ -9,8 +9,7 @@
     "lint": "vue-cli-service lint",
     "semantic-release": "semantic-release"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/firestore-roles-manager-ui.common.js",
   "files": [
     "/dist",
     "/src",
