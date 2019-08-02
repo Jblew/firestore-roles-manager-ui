@@ -2,19 +2,19 @@ dist: xenial
 language: node_js
 
 branches:
-    except:
-        - /^v[0-9]/
+  except:
+    - /^v[0-9]/
 
 install:
-    - npm ci
+  - npm ci
 
 script:
-    - npm run build
+  - npm run build
 
 deploy:
-    - provider: script
-        script: npx semantic-release
-        skip_cleanup: true
-        on:
-            tags: false
-            branch: release
+  - provider: script
+    script: npx semantic-release
+    skip_cleanup: true
+    on:
+      tags: false
+      branch: release
