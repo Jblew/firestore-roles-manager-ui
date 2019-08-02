@@ -21,6 +21,7 @@ const resetUser: Mutations.ResetUser.Declaration = (state: Me.State) => {
 };
 
 const setState: Mutations.SetState.Declaration = (state: Me.State, payload: { state: Me.AuthState }) => {
+    ow(payload, "payload", ow.object);
     ow(
         payload.state,
         "payload.state",

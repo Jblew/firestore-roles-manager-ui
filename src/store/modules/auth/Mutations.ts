@@ -31,7 +31,7 @@ export namespace Mutations {
     }
 
     export namespace SetState {
-        export const name = Me.localName("setUser");
+        export const name = Me.localName("setState");
 
         export interface Payload {
             state: Me.AuthState;
