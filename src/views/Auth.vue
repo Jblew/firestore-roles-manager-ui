@@ -22,7 +22,7 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { config, labels, Store } from "../global";
+import { getConfig, labels, Store } from "../global";
 import { FirebaseAuthHelper } from "../helper/FirebaseAuthHelper";
 import { routes } from "../router/routes";
 import { AuthModule } from "../store/modules/auth/AuthModule";
@@ -37,7 +37,11 @@ export default Vue.extend({
         };
     },
     mounted() {
-        FirebaseAuthHelper.startFirebaseAuthUI("#firebaseui-auth-container", routes.home.path, config.authProviders);
+        FirebaseAuthHelper.startFirebaseAuthUI(
+            "#firebaseui-auth-container",
+            routes.home.path,
+            getConfig().authProviders,
+        );
     },
     computed: {
         loading(): boolean {

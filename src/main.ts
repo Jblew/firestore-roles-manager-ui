@@ -1,3 +1,4 @@
-import FirestoreRolesManagerUIVueApp from "./index";
+import VueInitializer from "./index";
 
-FirestoreRolesManagerUIVueApp.$mount("#app");
+const vueEntry = VueInitializer();
+vueEntry.$mount("#app");

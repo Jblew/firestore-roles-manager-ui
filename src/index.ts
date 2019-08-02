@@ -14,28 +14,29 @@ import { AuthModule } from "./store/modules/auth/AuthModule";
 import { RootStore, Store } from "./store/Store";
 import { StoreImpl } from "./store/StoreImpl";
 
-export default new Vue({
-    router,
-    store: StoreImpl.store,
-    render: h => h(App),
-    computed: {
-        authState(): AuthModule.AuthState {
-            return Store.of(this).state.auth.state;
+export default () =>
+    new Vue({
+        router,
+        store: StoreImpl.store,
+        render: h => h(App),
+        computed: {
+            authState(): AuthModule.AuthState {
+                return Store.of(this).state.auth.state;
+            },
         },
-    },
-    watch: {
-        authState(authState, oldAuthState) {
-            if (authState === AuthModule.AuthState.AUTHENTICATED) {
-                this.$router.push(routes.home.path);
-            }
+        watch: {
+            authState(authState, oldAuthState) {
+                if (authState === AuthModule.AuthState.AUTHENTICATED) {
+                    this.$router.push(routes.home.path);
+                }
+            },
         },
-    },
-    created() {
-        this.$store.dispatch(RootStore.Actions.initialize);
-    },
-    mounted() {
-        //
-    },
-    methods: {},
-    ...({ vuetify } as any), // type incompatibility
-});
+        created() {
+            this.$store.dispatch(RootStore.Actions.initialize);
+        },
+        mounted() {
+            //
+        },
+        methods: {},
+        ...({ vuetify } as any), // type incompatibility
+    });

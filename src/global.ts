@@ -6,7 +6,10 @@ import { NotificationsModule } from "./store/modules/notifications/Notifications
 export { labels } from "./labels";
 export { Store } from "./store/Store";
 export { visualConfig } from "./config/visual-config";
-export const config = Configuration.get();
+
+export function getConfig(): Configuration {
+    return Configuration.get();
+}
 
 export function showNotification(
     vue: CombinedVueInstance<any, any, any, any, any>,
