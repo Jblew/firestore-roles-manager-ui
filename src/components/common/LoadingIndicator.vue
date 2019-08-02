@@ -1,6 +1,6 @@
 <template>
   <div class="text--secondary caption">
-    <v-progress-circular color="accent" indeterminate></v-progress-circular>
+    <v-progress-circular color="blue" indeterminate></v-progress-circular>
     &nbsp;&nbsp;{{ text.loading }}...
   </div>
 </template>

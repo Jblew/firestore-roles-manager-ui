@@ -1,8 +1,13 @@
 <template>
   <div :style="{ display: 'inline-block' }">
-    <v-btn small class="mx-1" @click.stop="$emit('input', true)">
-      <v-icon small>{{ icon }}</v-icon>
-    </v-btn>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <v-btn small class="mx-1 mb-1" @click.stop="$emit('input', true)" v-on="on">
+          <v-icon small>{{ icon }}</v-icon>
+        </v-btn>
+      </template>
+      <span>{{ tooltip }}</span>
+    </v-tooltip>
     <v-dialog :value="value" persistent width="500">
       <v-card>
         <v-card-title>{{ title }}</v-card-title>
@@ -27,13 +32,13 @@
           <v-btn
             color="red"
             text
-            @click="$emit('input', false)"
+            @click.stop.prevent="$emit('input', false)"
             :disabled="!buttonsEnabled"
           >{{ cancelLabel }}</v-btn>
           <v-btn
             color="green"
             text
-            @click="$emit('accept')"
+            @click.stop.prevent="$emit('accept')"
             :disabled="!buttonsEnabled"
           >{{ acceptLabel }}</v-btn>
         </v-card-actions>
@@ -56,6 +61,7 @@ export default Vue.extend({
         value: Boolean,
         acceptLabel: String,
         cancelLabel: String,
+        tooltip: String,
     },
     data() {
         return {};

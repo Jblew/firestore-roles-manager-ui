@@ -54,6 +54,22 @@ export class FirestoreRolesAdapter {
         return await this.firestoreRoles.getAccountRecord(uid);
     }
 
+    public async enableRole(uid: string, role: string) {
+        return await this.firestoreRoles.enableRole(uid, role);
+    }
+
+    public async disableRole(uid: string, role: string) {
+        return await this.firestoreRoles.disableRole(uid, role);
+    }
+
+    public async requestRole(uid: string, role: string) {
+        return await this.firestoreRoles.requestRole(uid, role);
+    }
+
+    public async removeRoleRequest(uid: string, role: string) {
+        return await this.firestoreRoles.removeRoleRequest(uid, role);
+    }
+
     /**
      *
      * Singleton

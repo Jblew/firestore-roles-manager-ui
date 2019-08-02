@@ -7,22 +7,20 @@
       <v-chip v-if="requesting" color="black" class="mx-2" label small>{{ text.request }}</v-chip>
     </td>
     <td class="text-xs">{{ email }}</td>
-    <td class="text-xs">{{ uid }}</td>
-    <td class="text-xs">
+    <td class="text-xs uid-field">{{ uid }}</td>
+    <td class="text-xs actions-field">
       <span v-if="requesting">
-        <v-btn small class="mx-1">
-          <v-icon small>check</v-icon>
-        </v-btn>
-        <v-btn small class="mx-1">
+        <accept-request-action :uid="uid" :displayName="displayName" :email="email" :role="role" />
+        <v-btn small class="mx-1 mb-1">
           <v-icon small>close</v-icon>
         </v-btn>
       </span>
       <span v-else>
-        <v-btn small class="mx-1">
+        <v-btn small class="mx-1 mb-1">
           <v-icon small>delete</v-icon>
         </v-btn>
       </span>
-      <v-btn small class="mx-1">
+      <v-btn small class="mx-1 mb-1">
         <v-icon small>build</v-icon>
       </v-btn>
     </td>
@@ -30,12 +28,13 @@
 </template>
 
 <script lang="ts">
+import { AccountRecord } from "firestore-roles";
 import Vue from "vue";
 
-import { FirestoreRolesAdapter } from "../../adapter/FirestoreRolesAdapter";
-import { labels } from "../../global";
+import { labels, showNotification } from "../../global";
 import { RolesModule } from "../../store/modules/roles/RolesModule";
-import { AccountRecord } from "firestore-roles";
+
+import AcceptRequestAction from "./AcceptRequestAction.vue";
 
 export default Vue.extend({
     props: {
@@ -63,15 +62,28 @@ export default Vue.extend({
             return this.cached ? this.cached.error || "" : "";
         },
         displayName(): string {
-            return this.account ? this.account.displayName || "" : "";
+            return this.account ? this.account.displayName || "(unknown)" : "(not loaded)";
         },
         email(): string {
-            return this.account ? this.account.email || "" : "";
+            return this.account ? this.account.email || "(unknown)" : "(not loaded)";
+        },
+        role(): string {
+            return RolesModule.stateOf(this).data.loadedForRole;
         },
     },
     methods: {},
-    components: {},
+    components: {
+        AcceptRequestAction,
+    },
 });
 </script>
 <style scoped lang="scss">
+.uid-field {
+    max-width: 150px;
+    overflow-x: scroll;
+}
+
+.actions-field {
+    text-align: right;
+}
 </style>
