@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-snackbar :model="opened" :color="this.color">{{ message }}</v-snackbar>
+    <v-snackbar v-model="opened" :color="this.color">{{ message }}</v-snackbar>
   </div>
 </template>
 
@@ -23,7 +23,8 @@ export default Vue.extend({
             return NotificationsModule.stateOf(this).notifications.length > 0;
         },
         message(): string {
-            return this.opened ? NotificationsModule.stateOf(this).notifications[0].message : "";
+            const message = this.opened ? NotificationsModule.stateOf(this).notifications[0].message : "";
+            return message;
         },
         params(): any {
             return this.opened ? NotificationsModule.stateOf(this).notifications[0].params : {};

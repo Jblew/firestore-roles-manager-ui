@@ -1,5 +1,6 @@
 <template>
   <v-app id="app">
+    <notifications-snackbar />
     <drawer-layout v-if="authenticated">
       <router-view />
     </drawer-layout>
@@ -7,7 +8,6 @@
       <auth-view />
     </v-content>
     <footer-component />
-    <notifications-snackbar />
   </v-app>
 </template>
 

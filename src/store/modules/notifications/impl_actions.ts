@@ -29,7 +29,9 @@ const initialize: Me.Actions.Initialize.Declaration = ({ dispatch }): void => {
 
 const removeTimedOut: PrivateActions.RemoveTimedOut.Declaration = ({ commit, state }): void => {
     const filteredNotifications = state.notifications.filter(n => n.timestampGoneMs > Date.now());
-    Mutations.SetNotifications.commit(commit, { notifications: filteredNotifications });
+    if (filteredNotifications.length !== state.notifications.length) {
+        Mutations.SetNotifications.commit(commit, { notifications: filteredNotifications });
+    }
 };
 
 /**
