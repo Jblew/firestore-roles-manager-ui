@@ -1,4 +1,5 @@
 export const labels = {
+    logInPanelTitle: "Login to Firestore-roles manager app",
     logIn: "Log in",
     logOut: "Log out",
     loading: "Loading",

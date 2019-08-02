@@ -5,7 +5,7 @@
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
             <v-toolbar-title v-if="loading">{{ text.loading }}...</v-toolbar-title>
-            <v-toolbar-title v-else>{{ text.logIn }}...</v-toolbar-title>
+            <v-toolbar-title v-else>{{ text.logInPanelTitle }}...</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <div id="firebaseui-auth-container"></div>
@@ -31,7 +31,7 @@ export default Vue.extend({
     data() {
         return {
             text: {
-                logIn: labels.logIn,
+                logInPanelTitle: labels.logInPanelTitle,
                 loading: labels.loading,
             },
         };
