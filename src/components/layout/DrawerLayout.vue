@@ -22,7 +22,7 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { visualConfig } from "../../global";
+import { getConfig, visualConfig } from "../../global";
 
 import NavigationDrawerContents from "./NavigationDrawerContents.vue";
 
@@ -31,7 +31,7 @@ export default Vue.extend({
     data() {
         return {
             text: {
-                appTitle: visualConfig.appTitle,
+                appTitle: getConfig().title || visualConfig.appTitle,
             },
             drawer: null,
         };

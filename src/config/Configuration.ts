@@ -10,6 +10,7 @@ export interface Configuration {
     };
     authProviders: string[];
     roles: FirestoreRolesConfiguration;
+    title?: string;
 }
 
 export namespace Configuration {
@@ -19,6 +20,8 @@ export namespace Configuration {
         ow(c.firebase.authDomain, "Configuration.firebase.authDomain", ow.string.nonEmpty);
         ow(c.firebase.databaseURL, "Configuration.firebase.databaseURL", ow.string.url);
         ow(c.firebase.projectId, "Configuration.firebase.projectId", ow.string.nonEmpty);
+
+        ow(c.title, "Configuration.title", ow.optional.string.nonEmpty);
 
         FirestoreRolesConfiguration.validate(c.roles, "Configuration.roles ");
     }
