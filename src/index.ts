@@ -8,7 +8,6 @@ import "./components/common/common_components";
 import "./filters";
 import vuetify from "./plugins/vuetify"; // path to vuetify export
 import createRouter from "./router/router";
-import { routes } from "./router/routes";
 import { AuthModule } from "./store/modules/auth/AuthModule";
 import { RootStore, Store } from "./store/Store";
 import { StoreImpl } from "./store/StoreImpl";
