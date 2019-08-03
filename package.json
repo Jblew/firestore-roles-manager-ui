@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name firestore-roles-manager-ui src/index.ts",
+    "build-lib": "rm -rf dist && vue-cli-service build --target lib --name firestore-roles-manager-ui src/lib-entrypoint.ts",
     "lint": "vue-cli-service lint",
     "semantic-release": "semantic-release"
   },

@@ -6,6 +6,6 @@ export namespace FirestoreRolesManagerAppUI {
         window.ROLES_CONFIGURATION = config;
 
         const vueEntry = VueInitializer();
-        vueEntry.$mount("#app");
+        vueEntry.$mount(tag);
     }
 }
