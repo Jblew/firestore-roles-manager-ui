@@ -39,7 +39,7 @@ export default Vue.extend({
     mounted() {
         FirebaseAuthHelper.startFirebaseAuthUI(
             "#firebaseui-auth-container",
-            routes.home.path,
+            getConfig().basePath,
             getConfig().authProviders,
         );
     },
