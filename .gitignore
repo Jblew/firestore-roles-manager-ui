@@ -21,3 +21,5 @@ yarn-error.log*
 *.sw?
 
 public/config.js
+
+/.rpt2_cache
