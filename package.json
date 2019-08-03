@@ -22,7 +22,6 @@
     "firebaseui": "^4.1.0",
     "firestore-roles": "^2.1.0",
     "lodash": "^4.17.15",
-    "material-design-icons-iconfont": "^5.0.1",
     "ow": "^0.13.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",

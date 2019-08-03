@@ -1,4 +1,3 @@
-import "@mdi/font/css/materialdesignicons.css";
 import "firebase/app";
 import "firebase/firestore";
 import "firebaseui/dist/firebaseui.css";
