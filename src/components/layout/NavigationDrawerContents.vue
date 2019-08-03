@@ -8,7 +8,7 @@
 
       <material-drawer-tile-router
         :to="urls.rolesList"
-        icon="list"
+        icon="fa-shield-alt"
       >{{ text.rolesList | capitalize }}</material-drawer-tile-router>
     </v-list>
   </div>
