@@ -26,7 +26,7 @@ export default () =>
         watch: {
             authState(authState, oldAuthState) {
                 if (authState === AuthModule.AuthState.AUTHENTICATED) {
-                    this.$router.push(routes.home.path);
+                    // already handled in App.vue
                 }
             },
         },
