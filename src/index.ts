@@ -7,7 +7,7 @@ import App from "./App.vue";
 import "./components/common/common_components";
 import "./filters";
 import vuetify from "./plugins/vuetify"; // path to vuetify export
-import router from "./router/router";
+import createRouter from "./router/router";
 import { routes } from "./router/routes";
 import { AuthModule } from "./store/modules/auth/AuthModule";
 import { RootStore, Store } from "./store/Store";
@@ -15,7 +15,7 @@ import { StoreImpl } from "./store/StoreImpl";
 
 export default () =>
     new Vue({
-        router,
+        router: createRouter(),
         store: StoreImpl.store,
         render: h => h(App),
         computed: {
