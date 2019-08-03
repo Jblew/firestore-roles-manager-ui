@@ -1,7 +1,7 @@
 <template>
   <action-button-modal
     v-model="dialog"
-    icon="add"
+    icon="fa-plus"
     :title="text.grantRole"
     :questionText="questionText"
     :buttonsEnabled="buttonsEnabled"

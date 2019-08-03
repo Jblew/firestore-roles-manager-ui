@@ -1,7 +1,7 @@
 <template>
   <action-button-modal
     v-model="dialog"
-    icon="close"
+    icon="fa-times"
     :title="text.rejectRoleRequest"
     :questionText="questionText"
     :buttonsEnabled="buttonsEnabled"

@@ -4,7 +4,7 @@
       <navigation-drawer-contents />
     </v-navigation-drawer>
     <v-app-bar app fixed color="primary">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"><v-icon>fa-bars</v-icon></v-app-bar-nav-icon>
       <v-toolbar-title>{{ text.appTitle }}</v-toolbar-title>
     </v-app-bar>
     <v-content>

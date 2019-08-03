@@ -1,7 +1,7 @@
 <template>
   <action-button-modal
     v-model="dialog"
-    icon="delete"
+    icon="fa-minus-circle"
     :title="text.revokeRole"
     :questionText="questionText"
     :buttonsEnabled="buttonsEnabled"

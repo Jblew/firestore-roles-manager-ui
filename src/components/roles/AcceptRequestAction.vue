@@ -1,7 +1,7 @@
 <template>
   <action-button-modal
     v-model="dialog"
-    icon="check"
+    icon="fa-check"
     :title="text.confirmRoleRequest"
     :questionText="questionText"
     :buttonsEnabled="buttonsEnabled"
