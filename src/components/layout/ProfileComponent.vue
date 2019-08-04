@@ -27,10 +27,10 @@
 </template>
 
 <script lang="ts">
+import { Account, RolesAuthModule } from "firestore-roles-vuex-module";
 import Vue from "vue";
 
-import { labels, Store } from "../../global";
-import { AuthModule } from "../../store/modules/auth/AuthModule";
+import { labels } from "../../global";
 
 export default Vue.extend({
     name: "ProfileComponent",
@@ -43,18 +43,21 @@ export default Vue.extend({
     },
     computed: {
         authenticated(): boolean {
-            return Store.of(this).state.auth.state === AuthModule.AuthState.AUTHENTICATED;
+            return RolesAuthModule.stateOf(this).state === RolesAuthModule.AuthState.AUTHENTICATED;
+        },
+        account(): Account | undefined {
+            return RolesAuthModule.stateOf(this).account;
         },
         photoUrl(): string {
-            return Store.of(this).state.auth.profileImageURL || "";
+            return this.account ? this.account.photoURL || "" : "";
         },
         name(): string {
-            return Store.of(this).state.auth.username || "";
+            return this.account ? this.account.displayName || "" : "";
         },
     },
     methods: {
         signOut() {
-            Store.of(this).dispatch(AuthModule.Actions.logout);
+            RolesAuthModule.Actions.Logout.dispatch(this.$store.dispatch);
         },
     },
 });

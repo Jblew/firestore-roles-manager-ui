@@ -17,3 +17,12 @@ export function showNotification(
 ) {
     NotificationsModule.Actions.ShowNotification.dispatch(vue.$store.dispatch, notification);
 }
+
+export function showErrorNotification(vue: CombinedVueInstance<any, any, any, any, any>, message: string) {
+    const notification: NotificationsModule.Notification = {
+        message,
+        timeoutMs: 6000,
+        params: { color: "red" },
+    };
+    NotificationsModule.Actions.ShowNotification.dispatch(vue.$store.dispatch, notification);
+}

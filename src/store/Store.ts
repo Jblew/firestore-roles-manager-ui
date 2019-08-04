@@ -1,8 +1,8 @@
+import { RolesAuthModule } from "firestore-roles-vuex-module";
 import { CombinedVueInstance } from "vue/types/vue";
 import { Commit, Dispatch, Module } from "vuex";
 import { NotificationsModule } from "vuex-notifications-module";
 
-import { AuthModule } from "./modules/auth/AuthModule";
 import { RolesModule } from "./modules/roles/RolesModule";
 import { RootStore } from "./root/RootStore";
 
@@ -15,13 +15,13 @@ export interface Store {
 
 export namespace Store {
     export interface Modules {
-        [AuthModule.modulePathName]: Module<AuthModule.State, RootStore.State>;
+        [RolesAuthModule.modulePathName]: Module<RolesAuthModule.State, RootStore.State>;
         [NotificationsModule.modulePathName]: Module<NotificationsModule.State, RootStore.State>;
         [RolesModule.modulePathName]: Module<RolesModule.State, RootStore.State>;
     }
 
     export type State = {
-        [AuthModule.modulePathName]: AuthModule.State;
+        [RolesAuthModule.modulePathName]: RolesAuthModule.State;
         [NotificationsModule.modulePathName]: NotificationsModule.State;
         [RolesModule.modulePathName]: RolesModule.State;
     } & RootStore.State;

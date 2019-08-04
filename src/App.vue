@@ -14,13 +14,13 @@
 <script lang="ts">
 // @ts-check
 
+import { RolesAuthModule } from "firestore-roles-vuex-module";
 import Vue from "vue";
 
 import DrawerLayout from "./components/layout/DrawerLayout.vue";
 import FooterComponent from "./components/layout/Footer.vue";
 import NotificationsSnackbar from "./components/misc/NotificationsSnackbar.vue";
-import { Store, visualConfig } from "./global";
-import { AuthModule } from "./store/modules/auth/AuthModule";
+import { visualConfig } from "./global";
 import AuthView from "./views/Auth.vue";
 
 export default Vue.extend({
@@ -36,7 +36,7 @@ export default Vue.extend({
     methods: {},
     computed: {
         authenticated(): boolean {
-            return Store.of(this).state.auth.state === AuthModule.AuthState.AUTHENTICATED;
+            return RolesAuthModule.stateOf(this).state === RolesAuthModule.AuthState.AUTHENTICATED;
         },
     },
     components: {

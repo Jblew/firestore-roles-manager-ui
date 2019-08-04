@@ -20,11 +20,11 @@
 </template>
 
 <script lang="ts">
+import { RolesAuthModule } from "firestore-roles-vuex-module";
 import Vue from "vue";
 
-import { getConfig, labels, Store } from "../global";
+import { getConfig, labels } from "../global";
 import { FirebaseAuthHelper } from "../helper/FirebaseAuthHelper";
-import { AuthModule } from "../store/modules/auth/AuthModule";
 
 export default Vue.extend({
     data() {
@@ -44,7 +44,7 @@ export default Vue.extend({
     },
     computed: {
         loading(): boolean {
-            return Store.of(this).state.auth.state === AuthModule.AuthState.LOADING;
+            return RolesAuthModule.stateOf(this).state === RolesAuthModule.AuthState.LOADING;
         },
     },
 });

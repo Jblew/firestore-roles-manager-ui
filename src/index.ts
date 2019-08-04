@@ -6,29 +6,18 @@ import Vue from "vue";
 import App from "./App.vue";
 import "./components/common/common_components";
 import "./filters";
+import { initFirebase } from "./plugins/firebase";
 import vuetify from "./plugins/vuetify"; // path to vuetify export
 import createRouter from "./router/router";
-import { AuthModule } from "./store/modules/auth/AuthModule";
-import { RootStore, Store } from "./store/Store";
+import { RootStore } from "./store/Store";
 import { StoreImpl } from "./store/StoreImpl";
 
-export default () =>
-    new Vue({
+initFirebase();
+export default () => {
+    return new Vue({
         router: createRouter(),
-        store: StoreImpl.store,
+        store: StoreImpl.constructStore(),
         render: h => h(App),
-        computed: {
-            authState(): AuthModule.AuthState {
-                return Store.of(this).state.auth.state;
-            },
-        },
-        watch: {
-            authState(authState, oldAuthState) {
-                if (authState === AuthModule.AuthState.AUTHENTICATED) {
-                    // already handled in App.vue
-                }
-            },
-        },
         created() {
             this.$store.dispatch(RootStore.Actions.initialize);
         },
@@ -38,3 +27,4 @@ export default () =>
         methods: {},
         ...({ vuetify } as any), // type incompatibility
     });
+};
