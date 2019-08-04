@@ -1,8 +1,8 @@
 import { CombinedVueInstance } from "vue/types/vue";
 import { Commit, Dispatch, Module } from "vuex";
+import { NotificationsModule } from "vuex-notifications-module";
 
 import { AuthModule } from "./modules/auth/AuthModule";
-import { NotificationsModule } from "./modules/notifications/NotificationsModule";
 import { RolesModule } from "./modules/roles/RolesModule";
 import { RootStore } from "./root/RootStore";
 

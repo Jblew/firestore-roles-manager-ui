@@ -1,7 +1,7 @@
 import { ActionTree } from "vuex";
+import { NotificationsModule } from "vuex-notifications-module";
 
 import { AuthModule } from "../modules/auth/AuthModule";
-import { NotificationsModule } from "../modules/notifications/NotificationsModule";
 
 import { RootStore as Me } from "./RootStore";
 

@@ -1,7 +1,7 @@
 import { CombinedVueInstance } from "vue/types/vue";
+import { NotificationsModule } from "vuex-notifications-module";
 
 import { Configuration } from "./config/Configuration";
-import { NotificationsModule } from "./store/modules/notifications/NotificationsModule";
 
 export { labels } from "./labels";
 export { Store } from "./store/Store";

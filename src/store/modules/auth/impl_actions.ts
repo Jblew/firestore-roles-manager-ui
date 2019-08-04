@@ -1,9 +1,9 @@
 // tslint:disable no-console
 import { Action as VuexAction, ActionTree, Commit, Dispatch } from "vuex";
+import { NotificationsModule } from "vuex-notifications-module";
 
 import { FirestoreRolesAdapter } from "../../../adapter/FirestoreRolesAdapter";
 import { FirebaseAuthHelper } from "../../../helper/FirebaseAuthHelper";
-import { NotificationsModule } from "../notifications/NotificationsModule";
 
 import { AuthModule as Me } from "./AuthModule";
 import { Mutations } from "./Mutations";

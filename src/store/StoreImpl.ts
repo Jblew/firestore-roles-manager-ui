@@ -3,11 +3,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { ModuleTree } from "vuex";
+import { NotificationsModule, NotificationsModuleImpl } from "vuex-notifications-module";
 
 import { AuthModule } from "./modules/auth/AuthModule";
 import { AuthModuleImpl } from "./modules/auth/AuthModuleImpl";
-import { NotificationsModule } from "./modules/notifications/NotificationsModule";
-import { NotificationsModuleImpl } from "./modules/notifications/NotificationsModuleImpl";
 import { RolesModule } from "./modules/roles/RolesModule";
 import { RolesModuleImpl } from "./modules/roles/RolesModuleImpl";
 import { RootStore } from "./root/RootStore";

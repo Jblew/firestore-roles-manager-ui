@@ -4,11 +4,11 @@ import Vuetify from "vuetify/lib";
 Vue.use(Vuetify);
 
 export default new Vuetify({
+    icons: {
+        iconfont: "fa",
+    },
     theme: {
         dark: true,
-        icons: {
-            iconfont: "fa",
-        },
         themes: {
             dark: {
                 accent: "#F44336",

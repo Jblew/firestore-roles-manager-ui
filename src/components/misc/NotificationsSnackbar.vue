@@ -6,18 +6,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-
-import { labels } from "../../global";
-import { NotificationsModule } from "../../store/modules/notifications/NotificationsModule";
+import { NotificationsModule } from "vuex-notifications-module";
 
 export default Vue.extend({
-    data() {
-        return {
-            text: {
-                signOut: labels.logOut,
-            },
-        };
-    },
     computed: {
         opened(): boolean {
             return NotificationsModule.stateOf(this).notifications.length > 0;
