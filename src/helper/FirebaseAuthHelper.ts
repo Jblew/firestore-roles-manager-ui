@@ -1,6 +1,6 @@
 // tslint:disable:ordered-imports no-console
 
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 import * as firebaseui from "firebaseui";
 
 export class FirebaseAuthHelper {
