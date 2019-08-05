@@ -20,20 +20,9 @@ import Vue from "vue";
 import DrawerLayout from "./components/layout/DrawerLayout.vue";
 import FooterComponent from "./components/layout/Footer.vue";
 import NotificationsSnackbar from "./components/misc/NotificationsSnackbar.vue";
-import { visualConfig } from "./global";
 import AuthView from "./views/Auth.vue";
 
 export default Vue.extend({
-    props: [],
-    data() {
-        return {
-            text: {
-                appTitle: visualConfig.appTitle,
-            },
-            drawer: null,
-        };
-    },
-    methods: {},
     computed: {
         authenticated(): boolean {
             return RolesAuthModule.stateOf(this).state === RolesAuthModule.AuthState.AUTHENTICATED;

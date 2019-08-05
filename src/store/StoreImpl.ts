@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
 import { Account, RolesAuthModule } from "firestore-roles-vuex-module";
 import Vue from "vue";
 import Vuex, { ActionHandler, Store as VuexStore } from "vuex";
