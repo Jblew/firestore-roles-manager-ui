@@ -12,8 +12,9 @@ import createRouter from "./router/router";
 import { RootStore } from "./store/Store";
 import { StoreImpl } from "./store/StoreImpl";
 
-initFirebase();
 export default () => {
+    initFirebase();
+
     return new Vue({
         router: createRouter(),
         store: StoreImpl.constructStore(),

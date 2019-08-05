@@ -1,4 +1,4 @@
-window.ROLES_CONFIGURATION = {
+window.LOADABLE_ROLES_CONFIGURATION = {
     firebase: {
         apiKey: "",
         authDomain: "",
