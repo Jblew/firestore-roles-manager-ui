@@ -19,33 +19,19 @@ import { RolesModule } from "../../store/modules/roles/RolesModule";
 export default Vue.extend({
     data() {
         return {
-            availableRoles: FirestoreRolesAdapter.getInstance().getAvailableRoles(),
             text: {
-                selectRole: labels.selectRole,
                 couldNotLoadAccounts: labels.couldNotLoadAccounts,
             },
         };
     },
     computed: {
-        selectedRole(): string {
-            return RolesModule.stateOf(this).role;
-        },
         loading(): boolean {
             return RolesModule.stateOf(this).state.loading;
         },
         error(): string {
             return RolesModule.stateOf(this).state.error;
         },
-        buttonsActive(): boolean {
-            return !this.loading;
-        },
     },
-    methods: {
-        reloadAccounts(role: string) {
-            RolesModule.Actions.ReloadAccounts.dispatch(this.$store.dispatch, { role });
-        },
-    },
-    components: {},
 });
 </script>
 <style scoped lang="scss">
