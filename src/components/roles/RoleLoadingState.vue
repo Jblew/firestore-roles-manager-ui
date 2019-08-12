@@ -12,7 +12,6 @@
 <script lang="ts">
 import Vue from "vue";
 
-import { FirestoreRolesAdapter } from "../../adapter/FirestoreRolesAdapter";
 import { labels } from "../../global";
 import { RolesModule } from "../../store/modules/roles/RolesModule";
 
