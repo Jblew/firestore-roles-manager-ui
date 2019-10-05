@@ -17,4 +17,17 @@ export namespace PrivateActions {
             return dispatchFn(name, payload);
         }
     }
+
+    export namespace ReloadIfRoleNotChanged {
+        export const name = Me.localName("reloadIfRoleNotChanged");
+
+        export interface Payload {
+            role: string;
+        }
+        export type Declaration = ActionFn & ((c: ActionContext, uid: Payload) => void);
+
+        export function dispatch(dispatchFn: Dispatch, payload: Payload) {
+            return dispatchFn(name, payload);
+        }
+    }
 }

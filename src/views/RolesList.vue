@@ -1,9 +1,9 @@
 <template>
-  <v-container flex>
-    <role-selector-panel />
-    <role-loading-state />
-    <role-accounts-table />
-  </v-container>
+    <v-container flex>
+        <role-selector-panel />
+        <role-accounts-table />
+        <role-loading-state />
+    </v-container>
 </template>
 
 <script lang="ts">

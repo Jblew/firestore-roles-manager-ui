@@ -1,26 +1,26 @@
 <template>
-  <v-layout wrap>
-    <v-flex v-if="!role" xs12 text-center class="my-2">
-      <i>{{ text.pleaseSelectRole }}</i>
-    </v-flex>
-    <v-flex v-if="!loading && !error && role" xs12 class="my-2">
-      <grant-role-action :role="role" />
-    </v-flex>
-    <v-flex xs12>
-      <v-data-table
-        v-if="rows.length > 0"
-        :headers="headers"
-        :items="rows"
-        :page.sync="page"
-        :items-per-page="itemsPerPage"
-        class="elevation-1"
-      >
-        <template v-slot:item="props">
-          <table-row :uid="props.item.uid" :requesting="props.item.requesting" />
-        </template>
-      </v-data-table>
-    </v-flex>
-  </v-layout>
+    <v-layout wrap>
+        <v-flex v-if="!role" xs12 text-center class="my-2">
+            <i>{{ text.pleaseSelectRole }}</i>
+        </v-flex>
+        <v-flex v-if="!error && role" xs12 class="my-2">
+            <grant-role-action :role="role" />
+        </v-flex>
+        <v-flex xs12>
+            <v-data-table
+                v-if="rows.length > 0"
+                :headers="headers"
+                :items="rows"
+                :page.sync="page"
+                :items-per-page="itemsPerPage"
+                class="elevation-1"
+            >
+                <template v-slot:item="props">
+                    <table-row :uid="props.item.uid" :requesting="props.item.requesting" />
+                </template>
+            </v-data-table>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script lang="ts">
@@ -49,9 +49,6 @@ export default Vue.extend({
     computed: {
         role(): string {
             return RolesModule.stateOf(this).data.loadedForRole;
-        },
-        loading(): boolean {
-            return RolesModule.stateOf(this).state.loading;
         },
         error(): string {
             return RolesModule.stateOf(this).state.error;

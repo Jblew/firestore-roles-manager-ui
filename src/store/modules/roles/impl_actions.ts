@@ -1,4 +1,5 @@
 // tslint:disable no-console
+import { StaticConfig } from "@/config/StaticConfig";
 import ow from "ow";
 import { ActionTree } from "vuex";
 
@@ -21,7 +22,6 @@ const reloadAccounts: Me.Actions.ReloadAccounts.Declaration = (
 
     Mutations.SetRole.commit(commit, role);
     Mutations.SetState.commit(commit, { loading: true, error: "" });
-    Mutations.SetData.commit(commit, { accounts: [], loadedForRole: state.data.loadedForRole });
 
     function ensureAccountsInCache(uids: string[]) {
         for (const uid of uids) {
@@ -30,6 +30,7 @@ const reloadAccounts: Me.Actions.ReloadAccounts.Declaration = (
     }
 
     (async () => {
+        console.log("Loading accounts list");
         try {
             let recordsSoFar: Me.AccountLoaderRow[] = [];
             const appendToTable = (newRecords: Me.AccountLoaderRow[]) => {
@@ -41,7 +42,13 @@ const reloadAccounts: Me.Actions.ReloadAccounts.Declaration = (
             Mutations.SetState.commit(commit, { loading: false, error: "" });
         } catch (error) {
             Mutations.SetState.commit(commit, { loading: false, error: error.message });
+            Mutations.SetData.commit(commit, { accounts: [], loadedForRole: state.data.loadedForRole });
             console.error(error);
+        } finally {
+            setTimeout(
+                () => PrivateActions.ReloadIfRoleNotChanged.dispatch(dispatch, { role }),
+                StaticConfig.REFRESH_INTERVAL_MS,
+            );
         }
     })();
 };
@@ -64,6 +71,14 @@ const ensureAccountInCache: PrivateActions.EnsureAccountInCache.Declaration = ({
     }
 };
 
+const reloadIfRoleNotChanged: PrivateActions.ReloadIfRoleNotChanged.Declaration = (
+    { dispatch, state },
+    payload: { role: string },
+) => {
+    ow(payload.role, ow.string.nonEmpty.is(r => FirestoreRolesAdapter.getInstance().isAvailableRole(r)));
+    if (payload.role === state.role) Me.Actions.ReloadAccounts.dispatch(dispatch, { role: payload.role });
+};
+
 /**
  *
  * Type safe definitions and export
@@ -71,6 +86,7 @@ const ensureAccountInCache: PrivateActions.EnsureAccountInCache.Declaration = ({
 export const actions: ActionTree<Me.State, Me.State> = {
     [Me.Actions.ReloadAccounts.name]: reloadAccounts,
     [PrivateActions.EnsureAccountInCache.name]: ensureAccountInCache,
+    [PrivateActions.ReloadIfRoleNotChanged.name]: reloadIfRoleNotChanged,
 };
 
 /**
@@ -80,10 +96,10 @@ export const actions: ActionTree<Me.State, Me.State> = {
 async function doReloadAccounts(role: string, appendData: (records: Me.AccountLoaderRow[]) => void) {
     const requestersUids = await FirestoreRolesAdapter.getInstance().getUidsRequestingRole(role);
     const requestersRows = requestersUids.map(uid => uidToRow({ uid, requesting: true }));
-    appendData(requestersRows);
 
     const uidsInRole = await FirestoreRolesAdapter.getInstance().getUidsInRole(role);
     const usersInRoleRows = uidsInRole.map(uid => uidToRow({ uid, requesting: false }));
+    appendData(requestersRows);
     appendData(usersInRoleRows);
 }
 
