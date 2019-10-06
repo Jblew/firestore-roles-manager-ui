@@ -1,4 +1,4 @@
-import ow from "ow";
+import ow from "ow--fork-by-jblew-with-catching";
 import { MutationTree } from "vuex";
 
 import { Mutations } from "./Mutations";

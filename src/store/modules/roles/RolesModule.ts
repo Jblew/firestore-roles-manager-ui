@@ -2,7 +2,7 @@
 
 import { ow_catch } from "@/util/util";
 import { AccountRecord } from "firestore-roles";
-import ow from "ow";
+import ow from "ow--fork-by-jblew-with-catching";
 import { CombinedVueInstance } from "vue/types/vue";
 import { Action as VuexAction, ActionContext as VuexActionContext, Dispatch } from "vuex";
 

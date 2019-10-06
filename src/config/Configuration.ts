@@ -1,5 +1,5 @@
 import { FirestoreRolesConfiguration } from "firestore-roles";
-import ow from "ow";
+import ow from "ow--fork-by-jblew-with-catching";
 
 export interface Configuration {
     firebase: {

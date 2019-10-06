@@ -1,6 +1,6 @@
 // tslint:disable no-console
 import { StaticConfig } from "@/config/StaticConfig";
-import ow from "ow";
+import ow from "ow--fork-by-jblew-with-catching";
 import { ActionTree } from "vuex";
 
 import { FirestoreRolesAdapter } from "../../../adapter/FirestoreRolesAdapter";

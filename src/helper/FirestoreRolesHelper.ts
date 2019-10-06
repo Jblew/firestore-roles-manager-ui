@@ -1,6 +1,6 @@
 // tslint:disable member-ordering no-console
 import * as _ from "lodash";
-import ow from "ow";
+import ow from "ow--fork-by-jblew-with-catching";
 
 import { FirestoreRolesAdapter } from "../adapter/FirestoreRolesAdapter";
 import { Configuration } from "../config/Configuration";
